@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Task</title>
+</head>
+<body>
+    <h1>Are you sure you want to delete "{{ item.title }}"?</h1>
+    
+    <form method="POST" action="">
+        {% csrf_token %}
+        <a href="{% url 'list' %}">Cancel</a>
+        <input type="submit" value="Confirm Delete" style="background-color: red; color: white;">
+    </form>
+</body>
+</html>

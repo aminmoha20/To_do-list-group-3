@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Task</title>
+</head>
+<body>
+    <h1>Update Task: {{ task.title }}</h1>
+    
+    <form method="POST">
+        {% csrf_token %}
+        
+        {{ form.as_p }} 
+        
+        <button type="submit">Save Changes</button>
+    </form>
+    
+    <a href="{% url 'list' %}">Cancel and go back</a>
+</body>
+</html>
