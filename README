@@ -1,96 +1,90 @@
-o-Do List App (Django)
+# To-Do List App (Django)
 
-A simple but fully functional To-Do List Web Application built with Django.
+A simple but fully functional **To-Do List Web Application** built with Django.  
 Each user can register, log in, and manage their own tasks securely.
 
-This application includes:
+---
 
-User registration & login
-Per-user tasks (no user can see another user’s tasks)
-Add / Update / Delete tasks
-Mark tasks as completed
-Due dates & overdue detection
-Clean, responsive UI
-Fully organized project structure
+## Features
 
-Features
-Authentication
+###  Authentication
+- User registration (`/register`)
+- User login (`/login`)
+- User logout (`/logout`)
+- Redirects to the task list after login
+- Prevents access to task pages when not logged in
 
-User registration (/register)
+### Task Management
+- Add new tasks
+- Edit/update task titles
+- Mark tasks complete/incomplete
+- Delete tasks
+- Each task belongs to a specific user (foreign key)
 
-User login (/login)
+**Task model includes:**
+- `title`
+- `complete`
+- `created_at`
+- `due_date`
+- Overdue indicator
 
-User logout (/logout)
+###  Smart Behavior
+- Tasks are filtered by the logged-in user
+- Default user applied to old tasks using `update()`
+- URLs are named properly (`index`, `update_task`, etc.)
+- Modern HTML templates styled with a clean, responsive UI
 
-Redirects to the task list after login
+---
 
-Prevents access to task pages when not logged in
+## ⚙️ Installation & Setup
 
-Task Management
+1. **Clone the repository**
+   ```bash
+   git clone <your-repository-url>
+   cd To_do-list-group-3
 
-Add new tasks
+2. **Create and activate a virtual environment**
 
-Edit/update task titles
-
-Mark tasks complete/incomplete
-
-Delete tasks
-
-Each task belongs to a specific user (foreign key)
-
-Tasks include:
-
-title
-
-complete
-
-created_at
-
-due_date
-
-Overdue indicator
-
-Smart Behavior
-
-Tasks are filtered by the logged-in user
-
-Default user applied to old tasks using update()
-
-URLs are named properly (index, update_task, etc.)
-
-Modern HTML templates styled to match requested UI
-
-
-Installation & Setup
-1️. Clone the repository
-git clone <your-repository-url>
-cd To_do-list-group-3
-
-2. Create and activate a virtual environment
+bash
 python -m venv env
-env\Scripts\activate      # Windows
+# Windows
+env\Scripts\activate
+Install dependencies
 
-3. Install dependencies
+bash
 pip install django
+Apply migrations
 
-4. Apply migrations
+bash
 python manage.py makemigrations
 python manage.py migrate
+Start the development server
 
-5. Start the development server
+bash
 python manage.py runserver
+👉 Visit: http://127.0.0.1:8000/
 
-
-Visit:
-
-http://127.0.0.1:8000/
-
- Creating a Superuser (Admin Panel)
+👨‍💻 Creating a Superuser (Admin Panel)
+bash
 python manage.py createsuperuser
-
-
 Admin login: group3
-Password:    12345
 
-http://127.0.0.1:8000/admin/
+Password: 12345
+
+Admin Panel: http://127.0.0.1:8000/admin/
+
+📂 Project Structure
+Code
+To_do-list-group-3/
+│── manage.py
+│── to_do_list/        # Main Django app
+│   ├── templates/     # HTML templates
+│   ├── static/        # CSS, JS, images
+│   ├── models.py      # Task model
+│   ├── views.py       # App logic
+│   ├── urls.py        # URL routing
+│── db.sqlite3         # Database
+│── requirements.txt   # Dependencies
+📜 License
+MIT License — All Rights Reserved © 2025
 
