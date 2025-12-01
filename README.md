@@ -36,45 +36,46 @@ Each user can register, log in, and manage their own tasks securely.
 
 ---
 
-## ⚙️ Installation & Setup
+##  Installation & Setup
 
 1. **Clone the repository**
    ```bash
-   git clone <your-repository-url>
+   git clone https://github.com/aminmoha20/To_do-list-group-3.git
    cd To_do-list-group-3
 
 2. **Create and activate a virtual environment**
+   ```bash
+   python -m venv env
+   env\Scripts\activate # Windows
 
-bash
-python -m venv env
-# Windows
-env\Scripts\activate
-Install dependencies
+3. **Install dependencies**
+    ```bash
+    pip install django
 
-bash
-pip install django
-Apply migrations
+4. **Apply migrations**
+    ```bash
+    python manage.py makemigrations
+    python manage.py migrate
 
-bash
-python manage.py makemigrations
-python manage.py migrate
-Start the development server
+5. **Start the development server** 
+    ```bash
+    python manage.py runserver
 
-bash
-python manage.py runserver
-👉 Visit: http://127.0.0.1:8000/
+6. **Open Server**
+    ```bash
+    Visit: http://127.0.0.1:8000/
 
-👨‍💻 Creating a Superuser (Admin Panel)
-bash
-python manage.py createsuperuser
-Admin login: group3
+8. **Creating a Superuser (Admin Panel)**
+   ```bash
+   python manage.py createsuperuser
+   Admin login: group3
+   Password: 12345
+   Admin Panel: http://127.0.0.1:8000/admin/
+   ```
 
-Password: 12345
+##  Project Structure
 
-Admin Panel: http://127.0.0.1:8000/admin/
-
-📂 Project Structure
-Code
+```text
 To_do-list-group-3/
 │── manage.py
 │── to_do_list/        # Main Django app
@@ -85,6 +86,7 @@ To_do-list-group-3/
 │   ├── urls.py        # URL routing
 │── db.sqlite3         # Database
 │── requirements.txt   # Dependencies
-📜 License
-MIT License — All Rights Reserved © 2025
+ ```
+## License
+MIT License — All Rights Reserved © 2025 Group 3 Meta To-do list Project
 
