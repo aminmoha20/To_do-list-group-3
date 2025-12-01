@@ -1,0 +1,96 @@
+o-Do List App (Django)
+
+A simple but fully functional To-Do List Web Application built with Django.
+Each user can register, log in, and manage their own tasks securely.
+
+This application includes:
+
+User registration & login
+Per-user tasks (no user can see another user’s tasks)
+Add / Update / Delete tasks
+Mark tasks as completed
+Due dates & overdue detection
+Clean, responsive UI
+Fully organized project structure
+
+Features
+Authentication
+
+User registration (/register)
+
+User login (/login)
+
+User logout (/logout)
+
+Redirects to the task list after login
+
+Prevents access to task pages when not logged in
+
+Task Management
+
+Add new tasks
+
+Edit/update task titles
+
+Mark tasks complete/incomplete
+
+Delete tasks
+
+Each task belongs to a specific user (foreign key)
+
+Tasks include:
+
+title
+
+complete
+
+created_at
+
+due_date
+
+Overdue indicator
+
+Smart Behavior
+
+Tasks are filtered by the logged-in user
+
+Default user applied to old tasks using update()
+
+URLs are named properly (index, update_task, etc.)
+
+Modern HTML templates styled to match requested UI
+
+
+Installation & Setup
+1️. Clone the repository
+git clone <your-repository-url>
+cd To_do-list-group-3
+
+2. Create and activate a virtual environment
+python -m venv env
+env\Scripts\activate      # Windows
+
+3. Install dependencies
+pip install django
+
+4. Apply migrations
+python manage.py makemigrations
+python manage.py migrate
+
+5. Start the development server
+python manage.py runserver
+
+
+Visit:
+
+http://127.0.0.1:8000/
+
+ Creating a Superuser (Admin Panel)
+python manage.py createsuperuser
+
+
+Admin login: group3
+Password:    12345
+
+http://127.0.0.1:8000/admin/
+

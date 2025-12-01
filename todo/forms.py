@@ -13,3 +13,15 @@ class TaskForm(forms.ModelForm):
         # We only display the 'title' field for the creation form
         # We need 'completed' for the update form
         exclude = ['completed']
+
+
+from django import forms
+from .models import Task
+
+class TaskForm(forms.ModelForm):
+    class Meta:
+        model = Task
+        fields = ['title', 'due_date']  # <-- include due_date
+        widgets = {
+            'due_date': forms.DateTimeInput(attrs={'type': 'datetime-local'})  # nice UI input
+        }

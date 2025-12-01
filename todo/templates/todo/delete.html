@@ -3,14 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <title>Delete Task</title>
+    <style>
+        body {
+            font-family: "Times New Roman", "Book Antiqua", serif;
+            background: #f3f4f6;
+            margin: 0;
+            padding: 40px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .form-container {
+            background: #fff;
+            padding: 30px;
+            margin: 0 auto;
+            width: 90%;
+            max-width: 700px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background: #dc2626; /* red for delete */
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: "Times New Roman", "Book Antiqua", serif;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+
+        button:hover {
+            background: #b91c1c;
+        }
+
+        a {
+            display: inline-block;
+            text-decoration: none;
+            color: #2563eb;
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <h1>Are you sure you want to delete "{{ item.title }}"?</h1>
-    
-    <form method="POST" action="">
-        {% csrf_token %}
-        <a href="{% url 'list' %}">Cancel</a>
-        <input type="submit" value="Confirm Delete" style="background-color: red; color: white;">
-    </form>
+
+    <h1>Delete Task</h1>
+
+    <div class="form-container">
+        <p>Are you sure you want to delete: "{{ item.title }}"?</p>
+
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit">Yes, Delete</button>
+            <a href="{% url 'list' %}">Cancel</a>
+        </form>
+    </div>
+
 </body>
 </html>

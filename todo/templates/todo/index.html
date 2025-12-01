@@ -1,126 +1,131 @@
-<!DOCTYPE html>
+<!-- todo/templates/todo/index.html -->
+<!DOCTYPE html> 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Django To-Do List</title>
-    
+    <title>Task List</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f7f6;
-            display: flex;
-            justify-content: center;
-            padding: 20px;
-        }
-        .container {
-            width: 100%;
-            max-width: 600px;
-            background-color: #ffffff;
-            padding: 30px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            border-radius: 8px;
-        }
-        h1 {
-            color: #333;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
-        /* Styling the form area */
-        form {
-            display: flex;
-            margin-bottom: 25px;
-        }
-        input[type="text"] {
-            flex-grow: 1;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px 0 0 4px; /* Rounded left side */
-            font-size: 16px;
-        }
-        input[type="submit"] {
-            background-color: #5cb85c;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            cursor: pointer;
-            border-radius: 0 4px 4px 0; /* Rounded right side */
-            font-size: 16px;
-            transition: background-color 0.3s;
-        }
-        input[type="submit"]:hover {
-            background-color: #4cae4c;
-        }
-        /* Styling the list items */
-        .task-wrapper {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 0;
-            border-bottom: 1px solid #eee;
-        }
-        .task-wrapper:last-child {
-            border-bottom: none;
-        }
-        /* Task text styling */
-        .task-wrapper span {
-            flex-grow: 1;
-            font-size: 1.1em;
-            color: #333;
-            word-wrap: break-word;
-            padding-right: 10px;
-        }
-        /* Styling for completed tasks */
-        .completed {
-            text-decoration: line-through;
-            color: #888;
-        }
-        /* Styling the action links */
-        .task-wrapper a {
-            text-decoration: none;
-            color: #337ab7;
-            margin-left: 10px;
-            padding: 5px 8px;
-            border: 1px solid #337ab7;
-            border-radius: 4px;
-            transition: background-color 0.3s, color 0.3s;
-        }
-        .task-wrapper a:hover {
-            background-color: #337ab7;
-            color: white;
-        }
-    </style>
+    body {
+        font-family: "Times New Roman", "Book Antiqua", serif; 
+        background: #f3f4f6;
+        margin: 0;
+        padding: 40px;
+    }
+
+    h1 {
+        text-align: center;
+        color: #333;
+        font-family: "Times New Roman", "Book Antiqua", serif;
+    }
+
+    .form-container {
+        background: #fff;
+        padding: 30px;        
+        margin: 0 auto 30px auto; 
+        width: 90%;          
+        max-width: 700px;    
+        min-height: 150px;    
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        box-sizing: border-box; 
+    }
+
+    input[type="text"] {
+        width: 100%;          
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        margin-bottom: 10px;  
+        font-family: "Times New Roman", "Book Antiqua", serif;
+        font-size: 16px;
+    }
+
+    input[type="submit"] {
+        background: #4f46e5;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-family: "Times New Roman", "Book Antiqua", serif;
+        font-size: 16px;
+    }
+
+    input[type="submit"]:hover {
+        background: #4338ca;
+    }
+
+    .task-item {
+        background: #fff;
+        width: 90%;           /* responsive width */
+        max-width: 700px;
+        margin: 10px auto;
+        padding: 14px 20px;
+        border-radius: 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+        font-family: "Times New Roman", "Book Antiqua", serif;
+    }
+
+    .task-item span {
+        font-size: 16px;
+    }
+
+    .task-actions a {
+        margin-left: 10px;
+        text-decoration: none;
+        color: #2563eb;
+        font-weight: 500;
+    }
+
+    .task-actions a:hover {
+        text-decoration: underline;
+    }
+</style>
+
 </head>
+
 <body>
 
-    <div class="container">
+    <h1>Task List</h1>
 
-        <h1>Add New Task</h1>
+    <div class="form-container">
         <form method="POST" action="">
-            {% csrf_token %}
-            
-            {{ form.title }} 
-            
-            <input type="submit" value="Add Task">
-        </form>
-
-        <h1>My To-Do List</h1>
-        {% for task in tasks %}
-            <div class="task-wrapper">
-                
-                <span class="{% if task.completed %}completed{% endif %}">
-                    {{ task.title }}
-                </span>
-                
-                <div>
-                    <a href="{% url 'update_task' task.id %}">Update</a>
-                    <a href="{% url 'delete' task.id %}" style="border-color: #d9534f; color: #d9534f;">Delete</a>
-                </div>
-            </div>
-        {% empty %}
-            <p>You have nothing on your to-do list!</p>
-        {% endfor %}
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Add">
+       </form>
 
     </div>
+
+    {% for task in tasks %}
+        <div class="task-item">
+           
+     <span
+    {% if task.complete %}
+        style="text-decoration: line-through; color: gray;"
+    {% elif task.is_overdue %}
+        style="color: red;"
+    {% endif %}
+>
+    {{ task.title }}
+    {% if task.due_date %}
+        <small>(Due: {{ task.due_date|date:"M d, Y H:i" }})</small>
+    {% endif %}
+</span>
+
+
+            <div class="task-actions">
+                <a href="{% url 'update_task' task.id %}">Update</a>
+                <a href="{% url 'delete_task' task.id %}" style="color:#dc2626;">Delete</a>
+                <a href="{% url 'toggle_complete' task.id %}" style="color:#16a34a;">
+                    {% if task.complete %}Mark Incomplete{% else %}Mark Complete{% endif %}
+                </a>
+            </div>
+        </div>
+    {% endfor %}
+
 </body>
 </html>
